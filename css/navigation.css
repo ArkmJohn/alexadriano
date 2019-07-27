@@ -1,0 +1,140 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+.color-primary {
+  color: #ffffff !important;
+}
+
+.color-secondary {
+  color: #f1f2f2 !important;
+}
+
+.color-tertiary {
+  color: #808184 !important;
+}
+
+.background-color-primary {
+  background-color: #ffffff !important;
+}
+
+.background-color-secondary {
+  background-color: #f1f2f2 !important;
+}
+
+.background-color-tertiary {
+  background-color: #808184 !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.align-center-text {
+  text-align: center;
+}
+
+.menu-toggle {
+  display: block;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  z-index: 50;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.menu-toggle input {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  -webkit-touch-callout: none;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 32px;
+  height: 4px;
+  z-index: 1;
+  border-radius: 4px;
+  position: relative;
+  background: #000;
+  margin-bottom: 7px;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+.menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+  transition: width, 0.5s;
+}
+
+.menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+  transition: width, 0.5s;
+}
+
+.menu-toggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(0px, -22px);
+  background: #232323;
+  width: 36px;
+  transition: width, 0.5s;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+  opacity: 1;
+  transform: rotate(-45deg) translate(0, 24px);
+  width: 36px;
+}
+
+.menu-nav {
+  overflow: hidden;
+  position: fixed;
+  z-index: 30;
+  box-shadow: 5px 0px 50px grey;
+  width: 1000px;
+  height: 150vh;
+  margin: -100px 0 0 -200%;
+  padding: 50px;
+  padding-top: 200px;
+  background: #f4f4f4;
+  list-style-type: none;
+  transition: all 0.4s linear;
+}
+.menu-nav li {
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+.menu-nav.transition {
+  margin: -100px 0 0 65%;
+}
+
+.menu-link li {
+  padding: 10px 0;
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+}
+.menu-link li:hover {
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=navigation.css.map */

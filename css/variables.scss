@@ -1,0 +1,43 @@
+$primaryColor: #ffffff;
+$secondaryColor: #f1f2f2;
+$tertiaryColor: #808184;
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.color-primary {
+    color: $primaryColor !important;
+}
+
+.color-secondary {
+    color: $secondaryColor !important;
+}
+
+.color-tertiary {
+    color: $tertiaryColor !important;
+}
+
+.background-color-primary {
+    background-color: $primaryColor !important;
+}
+
+.background-color-secondary {
+    background-color: $secondaryColor !important;
+}
+
+.background-color-tertiary {
+    background-color: $tertiaryColor !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.align-center-text {
+    text-align: center;
+}

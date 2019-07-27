@@ -1,0 +1,295 @@
+@import './variables.scss';
+h1 {
+    font-weight: 900;
+}
+
+section {
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    overflow: hidden;
+}
+
+.spec-row {
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    min-height: 10vh;
+}
+
+footer {
+    width: 100%;
+    min-height: 10vh;
+    overflow: hidden;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.logo {
+    height: 10vh;
+    padding: 2vh 1vw;
+}
+
+.header-title {
+    font-size: 3em;
+}
+
+.header-sub {
+    font-size: 2em;
+    font-weight: 100;
+}
+
+.footer-p {
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+.me-image {
+    height: 20vh;
+}
+
+.quote {
+    font-size: 2em;
+    margin: 0px 10em;
+}
+
+.norm-text {
+    font-size: 2em;
+    margin: 0px 5em;
+}
+
+.padding {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.btn-section {
+    width: 20vw;
+    height: 8vh;
+    border: 2px solid;
+    background-color: transparent;
+    border-radius: 10px;
+    padding-top: 13px;
+    border-color: $primaryColor;
+    color: $primaryColor;
+    transition: all .5s;
+}
+
+.btn-section:hover {
+    background-color: $primaryColor;
+    color: black;
+}
+
+.btn-black {
+    width: 20vw;
+    height: 8vh;
+    border: 2px solid;
+    background-color: transparent;
+    border-radius: 10px;
+    padding-top: 13px;
+    border-color: black;
+    transition: all .5s;
+}
+
+.btn-black:hover {
+    background-color: black;
+    color: $primaryColor;
+}
+
+.full-width-col {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.full-width-image {
+    width: 100%;
+}
+
+figure {
+    overflow: hidden;
+}
+
+figure img {
+    opacity: 1;
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+    -webkit-transform: perspective(1000px) translate3d(0, 0, 0);
+    transform: perspective(1000px) translate3d(0, 0, 0);
+}
+
+figure:hover img {
+    -webkit-transform: perspective(1000px) translate3d(0, 0, 21px);
+    transform: perspective(1000px) translate3d(0, 0, 21px);
+}
+
+figure figcaption {
+    position: absolute;
+    bottom: 5em;
+    left: 0;
+    background: transparent;
+    transition: all .4s;
+    width: 100%;
+    height: 20%;
+    z-index: 1;
+    opacity: 0;
+    p {
+        padding: 1vh 5vw;
+        font-weight: 400;
+        font-size: 1.5em;
+        opacity: 0;
+        transition: all .4s;
+    }
+}
+
+figure:hover figcaption {
+    background: $primaryColor;
+    opacity: .8;
+    p {
+        opacity: 1;
+    }
+}
+
+figure figsub {
+    position: absolute;
+    bottom: 2vh;
+    right: 0;
+    background: transparent;
+    transition: all .4s;
+    width: 40%;
+    height: 15%;
+    z-index: 1;
+    opacity: 0;
+    p {
+        padding: 1vw 10vh;
+        font-weight: 400;
+        font-size: 1.5em;
+        opacity: 0;
+        transition: all .4s;
+    }
+}
+
+figure:hover figsub {
+    background: $primaryColor;
+    opacity: .7;
+    p {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    figure figcaption {
+        p {
+            padding: 1vw 5vh;
+            font-size: 1.2em;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    figure figcaption {
+        p {
+            padding: 1vw 2vh;
+            font-size: 1.1em;
+        }
+    }
+    figure figsub {
+        width: 45%;
+        height: 25%;
+        p {
+            padding: 3vh 5vw;
+        }
+    }
+    .footer-p {
+        font-size: 2em;
+        font-weight: 100;
+    }
+    .quote {
+        margin: 0px 5em;
+    }
+    .norm-text {
+        margin: 0px 5em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .menu-nav {
+        position: fixed;
+        z-index: 30;
+        box-shadow: 5px 0px 50px grey;
+        width: 1000px;
+        height: 150vh;
+        margin: -100px 0 0 -400%;
+        padding: 50px;
+        padding-top: 200px;
+        background: #f4f4f4;
+        list-style-type: none;
+        transition: all .4s linear;
+    }
+    .spec-row {
+        min-height: 150vh;
+    }
+    .menu-nav.transition {
+        margin: -100px 0 0 0%;
+    }
+    .btn-section {
+        width: 40vw;
+        height: 10vh;
+    }
+    .btn-black {
+        width: 40vw;
+        height: 10vh;
+    }
+    .padded {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .quote {
+        margin: 0px 3em;
+    }
+    .norm-text {
+        margin: 0px 3em;
+    }
+    figure figcaption {
+        p {
+            padding: 2vw 5vh;
+            font-size: 1.5em;
+        }
+    }
+    figure figsub {
+        width: 50%;
+        height: 30%;
+        p {
+            padding: 4vh 5vw;
+        }
+    }
+    .fluid {
+        width: 100% !important;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .col-set-mini {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+@media only screen and (max-width: 522px) {
+    figure figcaption {
+        p {
+            padding: 2vw 2vh;
+            font-size: 1em;
+        }
+    }
+}

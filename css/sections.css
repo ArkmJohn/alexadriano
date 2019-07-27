@@ -72,8 +72,9 @@ footer {
 }
 
 .logo {
-  height: 10vh;
-  padding: 2vh 1vw;
+  height: 4vh;
+  padding: 0vh 0vw;
+  margin-bottom: 2vh;
 }
 
 .header-title {

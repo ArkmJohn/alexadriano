@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Connect with Alex Adriano for collaborations, commissions, and inquiries."
+    />
+    <title>Contact — Alex Adriano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+  </head>
+  <body data-page="contact">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand-group">
+          <a class="brand" href="index.html" aria-label="Alex Adriano home">
+            <img src="assets/logo.png" alt="Alex Adriano logo" />
+          </a>
+          <div class="brand-copy">
+            <span class="brand-name">Alex Adriano</span>
+            <span class="brand-meta">Dubai | Since 2008</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a class="header-email" href="mailto:hello@alexadriano.com">hello@alexadriano.com</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <span class="nav-toggle__label">MENU</span>
+            <span class="nav-toggle__icon" aria-hidden="true">
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a class="is-active" href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--contact" aria-labelledby="contact-title">
+      <section class="contact" aria-label="Contact Alex Adriano">
+        <div class="contact__intro">
+          <h1 id="contact-title">Let’s collaborate.</h1>
+          <p>
+            Reach out for new projects, partnerships, or press inquiries. I’m open to collaborations
+            across fashion, sport, and interdisciplinary creative work.
+          </p>
+          <p>
+            Email me at
+            <a class="contact__email" href="mailto:hello@alexadriano.com">hello@alexadriano.com</a>.
+          </p>
+          <ul class="social-list" aria-label="Social profiles">
+            <li>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src="assets/clients/instagram.png" alt="Instagram" loading="lazy" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <img src="assets/clients/linkedin.png" alt="LinkedIn" loading="lazy" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">
+                <img src="assets/clients/behance.png" alt="Behance" loading="lazy" />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <form
+          class="contact-form"
+          action="mailto:hello@alexadriano.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-year></span> Alex Adriano. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

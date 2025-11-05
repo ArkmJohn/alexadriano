@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learn about Alex Adriano, a Filipino fashion designer based in Dubai." />
+    <title>About — Alex Adriano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+  </head>
+  <body data-page="about">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand-group">
+          <a class="brand" href="index.html" aria-label="Alex Adriano home">
+            <img src="assets/logo.png" alt="Alex Adriano logo" />
+          </a>
+          <div class="brand-copy">
+            <span class="brand-name">Alex Adriano</span>
+            <span class="brand-meta">Dubai | Since 2008</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a class="header-email" href="mailto:hello@alexadriano.com">hello@alexadriano.com</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <span class="nav-toggle__label">MENU</span>
+            <span class="nav-toggle__icon" aria-hidden="true">
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="is-active" href="about.html" aria-current="page">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--about" aria-labelledby="about-title">
+      <section class="about" aria-label="Biography">
+        <div class="about__media">
+          <img src="assets/profile.png" alt="Portrait of Alex Adriano" loading="eager" />
+        </div>
+        <div class="about__content">
+          <h1 id="about-title">Crafting fashion for fearless youth.</h1>
+          <div class="about__bio">
+            <p>
+              I am a Filipino fashion designer currently residing in Dubai, UAE. I specialize in
+              kidswear and am currently looking for avenues where I can expand to sportswear. My long
+              years of experience allow me to understand and adapt to the needs of the industry.
+            </p>
+            <p>
+              For me, fashion is a sharing discipline which favors being open and being able to change
+              through the trends. This is why it is essential to be a lookout for trends and changes in
+              the industry. For me, it is also a top priority to participate in various collaborations
+              that go beyond borders and culture that is parallel to my work in the industry.
+            </p>
+            <p>
+              After more than 15 years of experience, I am now more eager for newer and harder
+              challenges. I work effortlessly to diversify my artistic and technical skills and
+              experience. And now, I feel more than ever ready to go further in this process by finding
+              projects and collaborations abroad.
+            </p>
+            <p>
+              I love meeting new people and collaborating with new faces in different artistic projects.
+              Feel free to contact me about any questions, proposals, or potential collaborations!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="clients" aria-label="Select collaborations">
+        <h2>Selected Clients &amp; Collaborations</h2>
+        <ul class="client-list">
+          <li>
+            <img src="assets/clients/behance.png" alt="Behance" loading="lazy" />
+          </li>
+          <li>
+            <img src="assets/clients/instagram.png" alt="Instagram" loading="lazy" />
+          </li>
+          <li>
+            <img src="assets/clients/linkedin.png" alt="LinkedIn" loading="lazy" />
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-year></span> Alex Adriano. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

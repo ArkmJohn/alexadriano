@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Alex Adriano is a Dubai-based Filipino fashion designer presenting a cinematic portfolio of standout collections."
+    />
+    <meta property="og:title" content="Alex Adriano — Fashion Designer" />
+    <meta
+      property="og:description"
+      content="Explore the collections of Alex Adriano, a Filipino fashion designer based in Dubai."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexadriano.github.io/" />
+    <meta property="og:image" content="assets/gallery/collection-01.jpg" />
+    <title>Alex Adriano — Fashion Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand-group">
+          <a class="brand" href="index.html" aria-label="Alex Adriano home">
+            <img src="assets/logo.png" alt="Alex Adriano logo" />
+          </a>
+          <div class="brand-copy">
+            <span class="brand-name">Alex Adriano</span>
+            <span class="brand-meta">Dubai | Since 2008</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a class="header-email" href="mailto:hello@alexadriano.com">hello@alexadriano.com</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <span class="nav-toggle__label">MENU</span>
+            <span class="nav-toggle__icon" aria-hidden="true">
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a class="is-active" href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--home" aria-labelledby="home-title">
+      <section class="gallery-section" aria-labelledby="home-title">
+        <div class="gallery-shell" data-gallery>
+          <button
+            class="gallery-control gallery-control--prev"
+            type="button"
+            data-prev
+            aria-label="Previous collection"
+          >
+            <span aria-hidden="true">&lsaquo;</span>
+            <span class="sr-only">Previous</span>
+          </button>
+
+          <ul class="cards" role="list">
+            <li class="card js-card is-active" data-title="Forest Adventure I" data-collection="forest">
+              <img
+                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%201-real.png"
+                alt="Forest Adventure collection featuring earth-toned kidswear"
+                loading="eager"
+              />
+            </li>
+            <li class="card js-card" data-title="Forest Adventure III" data-collection="forest">
+              <img
+                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%203-real.png"
+                alt="Forest Adventure look with layered textures"
+                loading="lazy"
+              />
+            </li>
+            <li class="card js-card" data-title="Forest Adventure Accents" data-collection="forest">
+              <img
+                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%20Acc-05-real.png"
+                alt="Forest Adventure accessory flat lay featuring handcrafted details"
+                loading="lazy"
+              />
+            </li>
+            <li class="card js-card" data-title="Forest Adventure Props" data-collection="forest">
+              <img
+                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%20Props.png"
+                alt="Props for the Forest Adventure kidswear runway presentation"
+                loading="lazy"
+              />
+            </li>
+            <li class="card js-card" data-title="Space Exploration II" data-collection="space">
+              <img
+                src="img/Full%20Collections/Space%20Exploration/Space%20Exploration%202-real.png"
+                alt="Space Exploration collection with metallic jumpsuit"
+                loading="lazy"
+              />
+            </li>
+            <li class="card js-card" data-title="Space Exploration III" data-collection="space">
+              <img
+                src="img/Full%20Collections/Space%20Exploration/Space%20Exploration%203-real.png"
+                alt="Space Exploration child model in futuristic attire"
+                loading="lazy"
+              />
+            </li>
+            <li class="card js-card" data-title="Space Exploration Accessories" data-collection="space">
+              <img
+                src="img/Full%20Collections/Space%20Exploration/Space%20Ex%20Acc-Prop.png"
+                alt="Space Exploration accessory set featuring visors and gloves"
+                loading="lazy"
+              />
+            </li>
+          </ul>
+
+          <button
+            class="gallery-control gallery-control--next"
+            type="button"
+            data-next
+            aria-label="Next collection"
+          >
+            <span class="sr-only">Next</span>
+            <span aria-hidden="true">&rsaquo;</span>
+          </button>
+        </div>
+
+        <div class="collection-caption" role="status" aria-live="polite">
+          <p class="collection-eyebrow">Featured Series</p>
+          <h1 class="collection-title" id="home-title" data-active-title>Forest Adventure I</h1>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-year></span> Alex Adriano. All rights reserved.</p>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

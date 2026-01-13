@@ -9,10 +9,26 @@ const activeTitleTarget = document.querySelector("[data-active-title]");
 const lightbox = document.querySelector("[data-lightbox]");
 const gsapInstance = typeof window !== "undefined" ? window.gsap : null;
 const canAnimateCards = Boolean(gsapInstance);
+const simpleCarouselQuery = window.matchMedia("(max-width: 768px)");
 let refreshCarouselLayout = null;
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
+}
+
+const updateSimpleCarousel = () => {
+  if (simpleCarouselQuery.matches) {
+    body.dataset.simpleCarousel = "true";
+  } else {
+    delete body.dataset.simpleCarousel;
+  }
+};
+
+updateSimpleCarousel();
+if (typeof simpleCarouselQuery.addEventListener === "function") {
+  simpleCarouselQuery.addEventListener("change", updateSimpleCarousel);
+} else if (typeof simpleCarouselQuery.addListener === "function") {
+  simpleCarouselQuery.addListener(updateSimpleCarousel);
 }
 
 // Respect reduced motion preferences and update on change.
@@ -217,7 +233,25 @@ if (galleryEl) {
   const prevBtn = galleryEl.querySelector("[data-prev]");
   const nextBtn = galleryEl.querySelector("[data-next]");
   const totalCards = cards.length;
-  // Visual states for the carousel stack.
+  const useSimpleCarousel = body.dataset.simpleCarousel === "true";
+  if (useSimpleCarousel) {
+    cards.forEach((card, index) => {
+      card.dataset.position = "0";
+      card.classList.add("is-active");
+      card.setAttribute("aria-hidden", "false");
+      card.tabIndex = 0;
+      card.style.pointerEvents = "auto";
+      card.setAttribute(
+        "aria-label",
+        `${card.dataset.title ?? "Collection"} - ${index + 1} of ${cards.length}`
+      );
+      card.setAttribute("role", "group");
+    });
+    if (activeTitleTarget && cards[0] && cards[0].dataset?.title) {
+      activeTitleTarget.textContent = cards[0].dataset.title;
+    }
+  } else {
+    // Visual states for the carousel stack.
   const cardStateMap = {
     "-3": {
       translate: "-60vw",
@@ -479,4 +513,5 @@ if (galleryEl) {
   galleryEl.addEventListener("touchstart", onTouchStart, { passive: true });
   galleryEl.addEventListener("touchend", onTouchEnd);
   document.addEventListener("keydown", handleKeydown);
+  }
 }

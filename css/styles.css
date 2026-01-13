@@ -446,6 +446,40 @@ body[data-nav-open="true"] .site-nav {
   height: 60vh;
 }
 
+body[data-simple-carousel="true"] .gallery-control {
+  display: none;
+}
+
+body[data-simple-carousel="true"] .cards {
+  perspective: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.25rem;
+  padding: 0 1rem 1.5rem;
+  justify-content: flex-start;
+  align-items: stretch;
+  touch-action: pan-x;
+}
+
+body[data-simple-carousel="true"] .card {
+  position: relative;
+  flex: 0 0 78%;
+  --translate: 0;
+  --rotate: 0;
+  --scale: 1;
+  --opacity: 1;
+  transform: none;
+  opacity: 1;
+  filter: none;
+  pointer-events: auto;
+  scroll-snap-align: center;
+}
+
+body[data-simple-carousel="true"] .card img {
+  width: 100%;
+  height: auto;
+}
+
 .gallery-control {
   font-size: 0.85rem;
   letter-spacing: 0.3em;

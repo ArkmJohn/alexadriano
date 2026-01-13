@@ -6,6 +6,7 @@ const navLinks = document.querySelectorAll(".site-nav a");
 const siteNav = document.querySelector(".site-nav");
 const yearTarget = document.querySelector("[data-year]");
 const activeTitleTarget = document.querySelector("[data-active-title]");
+const lightbox = document.querySelector("[data-lightbox]");
 const gsapInstance = typeof window !== "undefined" ? window.gsap : null;
 const canAnimateCards = Boolean(gsapInstance);
 let refreshCarouselLayout = null;
@@ -14,6 +15,7 @@ if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
 }
 
+// Respect reduced motion preferences and update on change.
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (prefersReducedMotion.matches) {
   body.dataset.reducedMotion = "true";
@@ -30,6 +32,7 @@ if (typeof prefersReducedMotion.addEventListener === "function") {
   prefersReducedMotion.addListener(motionListener);
 }
 
+// Mobile navigation toggle and escape handling.
 if (navToggle) {
   if (siteNav) {
     siteNav.setAttribute("aria-hidden", "true");
@@ -86,14 +89,135 @@ if (navToggle) {
   });
 }
 
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
+// Lightbox for showcase and collection galleries.
+if (lightbox) {
+  const lightboxImage = lightbox.querySelector("[data-lightbox-image]");
+  const lightboxCaption = lightbox.querySelector("[data-lightbox-caption]");
+  const closeTargets = lightbox.querySelectorAll("[data-lightbox-close]");
+  const prevButton = lightbox.querySelector("[data-lightbox-prev]");
+  const nextButton = lightbox.querySelector("[data-lightbox-next]");
+  const lightboxTriggers = document.querySelectorAll(".showcase-grid img, .collection-gallery img");
+  let lastFocusedElement = null;
+  let currentGroup = [];
+  let currentIndex = 0;
+
+  // Group images by their nearest gallery container.
+  const getGroupImages = (imageEl) => {
+    const container = imageEl.closest(".showcase-grid, .collection-gallery");
+    if (!container) {
+      return [imageEl];
+    }
+    return Array.from(container.querySelectorAll("img"));
+  };
+
+  // Disable nav when a gallery has a single image.
+  const updateLightboxNavState = () => {
+    const multiple = currentGroup.length > 1;
+    if (prevButton) {
+      prevButton.disabled = !multiple;
+    }
+    if (nextButton) {
+      nextButton.disabled = !multiple;
+    }
+  };
+
+  // Sync lightbox image and caption with the selected thumbnail.
+  const updateLightboxImage = (imageEl) => {
+    if (!lightboxImage) return;
+    lightboxImage.src = imageEl.src;
+    lightboxImage.alt = imageEl.alt || "Portfolio image";
+    if (lightboxCaption) {
+      lightboxCaption.textContent = imageEl.alt || "";
+    }
+  };
+
+  // Open the lightbox and store focus for restoration.
+  const openLightbox = (imageEl) => {
+    lastFocusedElement = document.activeElement;
+    currentGroup = getGroupImages(imageEl);
+    currentIndex = Math.max(0, currentGroup.indexOf(imageEl));
+    updateLightboxImage(imageEl);
+    lightbox.dataset.open = "true";
+    lightbox.setAttribute("aria-hidden", "false");
+    body.dataset.lightboxOpen = "true";
+    updateLightboxNavState();
+    const closeButton = lightbox.querySelector(".lightbox__close");
+    if (closeButton) {
+      closeButton.focus();
+    }
+  };
+
+  // Loop through images in the current group.
+  const goToLightboxIndex = (nextIndex) => {
+    if (!currentGroup.length) return;
+    const total = currentGroup.length;
+    currentIndex = ((nextIndex % total) + total) % total;
+    updateLightboxImage(currentGroup[currentIndex]);
+    updateLightboxNavState();
+  };
+
+  // Close and reset the lightbox state.
+  const closeLightbox = () => {
+    delete lightbox.dataset.open;
+    lightbox.setAttribute("aria-hidden", "true");
+    delete body.dataset.lightboxOpen;
+    if (lightboxImage) {
+      lightboxImage.src = "";
+    }
+    currentGroup = [];
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
+  };
+
+  lightboxTriggers.forEach((imageEl) => {
+    imageEl.addEventListener("click", () => openLightbox(imageEl));
+    imageEl.setAttribute("tabindex", "0");
+    imageEl.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(imageEl);
+      }
+    });
+  });
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      goToLightboxIndex(currentIndex - 1);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      goToLightboxIndex(currentIndex + 1);
+    });
+  }
+
+  closeTargets.forEach((target) => {
+    target.addEventListener("click", closeLightbox);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightbox.dataset.open === "true") {
+      closeLightbox();
+    }
+    if (lightbox.dataset.open === "true" && event.key === "ArrowRight") {
+      event.preventDefault();
+      goToLightboxIndex(currentIndex + 1);
+    }
+    if (lightbox.dataset.open === "true" && event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToLightboxIndex(currentIndex - 1);
+    }
+  });
 }
 
 if (galleryEl) {
   const cards = Array.from(galleryEl.querySelectorAll(".js-card"));
   const prevBtn = galleryEl.querySelector("[data-prev]");
   const nextBtn = galleryEl.querySelector("[data-next]");
+  const totalCards = cards.length;
+  // Visual states for the carousel stack.
   const cardStateMap = {
     "-3": {
       translate: "-60vw",
@@ -159,6 +283,7 @@ if (galleryEl) {
     return cardStateMap[key] || cardStateMap["3"];
   };
 
+  // Apply the calculated transform/opacity to a card.
   const applyCardState = (card, offset, immediate = false) => {
     const state = getCardState(offset);
     const duration =
@@ -199,6 +324,22 @@ if (galleryEl) {
   );
   if (currentIndex === -1) currentIndex = 0;
 
+  const wrapIndex = (value) => {
+    return ((value % totalCards) + totalCards) % totalCards;
+  };
+
+  // Map indexes to the shortest offset around the carousel.
+  const getOffset = (index) => {
+    let diff = index - currentIndex;
+    const half = totalCards / 2;
+    if (diff > half) {
+      diff -= totalCards;
+    } else if (diff < -half) {
+      diff += totalCards;
+    }
+    return diff;
+  };
+
   let isAnimating = false;
   let wheelLock = false;
   let touchStartX = null;
@@ -208,8 +349,9 @@ if (galleryEl) {
   const updateCards = ({ focusActive = false, immediate = false } = {}) => {
     window.requestAnimationFrame(() => {
       cards.forEach((card, index) => {
-        const offset = index - currentIndex;
-        card.dataset.position = String(offset);
+        const offset = getOffset(index);
+        const clampedOffset = Math.max(-3, Math.min(3, offset));
+        card.dataset.position = String(clampedOffset);
         const isActive = offset === 0;
         card.classList.toggle("is-active", isActive);
         card.setAttribute("aria-hidden", String(!isActive));
@@ -230,7 +372,7 @@ if (galleryEl) {
 
   const advance = (direction) => {
     if (isAnimating) return;
-    const nextIndex = clamp(currentIndex + direction, 0, cards.length - 1);
+    const nextIndex = wrapIndex(currentIndex + direction);
     if (nextIndex === currentIndex) return;
     isAnimating = true;
     currentIndex = nextIndex;
@@ -283,6 +425,7 @@ if (galleryEl) {
     }
   };
 
+  // Reveal cards once they enter the viewport.
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -296,12 +439,22 @@ if (galleryEl) {
   );
 
   cards.forEach((card, index) => {
-    card.dataset.position = String(index - currentIndex);
+    const offset = getOffset(index);
+    card.dataset.position = String(Math.max(-3, Math.min(3, offset)));
     card.setAttribute(
       "aria-label",
       `${card.dataset.title ?? "Collection"} - ${index + 1} of ${cards.length}`
     );
     card.setAttribute("role", "group");
+    const cardLink = card.querySelector(".card__link");
+    if (cardLink) {
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          cardLink.click();
+        }
+      });
+    }
     if (index !== currentIndex) {
       card.tabIndex = -1;
       card.setAttribute("aria-hidden", "true");
@@ -310,7 +463,7 @@ if (galleryEl) {
       card.setAttribute("aria-hidden", "false");
     }
     observer.observe(card);
-    applyCardState(card, index - currentIndex, true);
+    applyCardState(card, offset, true);
   });
 
   refreshCarouselLayout = () => updateCards({ immediate: true });

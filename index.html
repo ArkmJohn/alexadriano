@@ -14,7 +14,22 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://alexadriano.github.io/" />
-    <meta property="og:image" content="assets/gallery/collection-01.jpg" />
+    <meta
+      property="og:image"
+      content="https://alexadriano.github.io/assets/gallery/collection-01.jpg"
+    />
+    <meta property="og:site_name" content="Alex Adriano" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alex Adriano - Fashion Designer" />
+    <meta
+      name="twitter:description"
+      content="Explore the collections of Alex Adriano, a Filipino fashion designer."
+    />
+    <meta
+      name="twitter:image"
+      content="https://alexadriano.github.io/assets/gallery/collection-01.jpg"
+    />
+    <link rel="canonical" href="https://alexadriano.github.io/" />
     <title>Alex Adriano — Fashion Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,6 +73,7 @@
         <ul>
           <li><a class="is-active" href="index.html" aria-current="page">Home</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -78,53 +94,67 @@
 
           <ul class="cards" role="list">
             <li class="card js-card is-active" data-title="Forest Adventure I" data-collection="forest">
-              <img
-                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%201-real.png"
-                alt="Forest Adventure collection featuring earth-toned kidswear"
-                loading="eager"
-              />
+              <a class="card__link" href="Portfolio/forest-adventure.html">
+                <img
+                  src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%201-real.png"
+                  alt="Forest Adventure collection featuring earth-toned kidswear"
+                  loading="eager"
+                />
+              </a>
             </li>
             <li class="card js-card" data-title="Forest Adventure III" data-collection="forest">
-              <img
-                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%203-real.png"
-                alt="Forest Adventure look with layered textures"
-                loading="lazy"
-              />
+              <a class="card__link" href="Portfolio/forest-adventure.html">
+                <img
+                  src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%203-real.png"
+                  alt="Forest Adventure look with layered textures"
+                  loading="lazy"
+                />
+              </a>
             </li>
             <li class="card js-card" data-title="Forest Adventure Accents" data-collection="forest">
-              <img
-                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%20Acc-05-real.png"
-                alt="Forest Adventure accessory flat lay featuring handcrafted details"
-                loading="lazy"
-              />
+              <a class="card__link" href="Portfolio/forest-adventure.html">
+                <img
+                  src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%20Acc-05-real.png"
+                  alt="Forest Adventure accessory flat lay featuring handcrafted details"
+                  loading="lazy"
+                />
+              </a>
             </li>
             <li class="card js-card" data-title="Forest Adventure Props" data-collection="forest">
-              <img
-                src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%20Props.png"
-                alt="Props for the Forest Adventure kidswear runway presentation"
-                loading="lazy"
-              />
+              <a class="card__link" href="Portfolio/forest-adventure.html">
+                <img
+                  src="img/Full%20Collections/Forest%20Adventure/Forest%20Adventure%20Props.png"
+                  alt="Props for the Forest Adventure kidswear runway presentation"
+                  loading="lazy"
+                />
+              </a>
             </li>
             <li class="card js-card" data-title="Space Exploration II" data-collection="space">
-              <img
-                src="img/Full%20Collections/Space%20Exploration/Space%20Exploration%202-real.png"
-                alt="Space Exploration collection with metallic jumpsuit"
-                loading="lazy"
-              />
+              <a class="card__link" href="Portfolio/space-exploration.html">
+                <img
+                  src="img/Full%20Collections/Space%20Exploration/Space%20Exploration%202-real.png"
+                  alt="Space Exploration collection with metallic jumpsuit"
+                  loading="lazy"
+                />
+              </a>
             </li>
             <li class="card js-card" data-title="Space Exploration III" data-collection="space">
-              <img
-                src="img/Full%20Collections/Space%20Exploration/Space%20Exploration%203-real.png"
-                alt="Space Exploration child model in futuristic attire"
-                loading="lazy"
-              />
+              <a class="card__link" href="Portfolio/space-exploration.html">
+                <img
+                  src="img/Full%20Collections/Space%20Exploration/Space%20Exploration%203-real.png"
+                  alt="Space Exploration child model in futuristic attire"
+                  loading="lazy"
+                />
+              </a>
             </li>
             <li class="card js-card" data-title="Space Explorations Pack" data-collection="space">
-              <img
-                src="img/Full%20Collections/Space%20Exploration/Space%20Ex%20Acc-Prop.png"
-                alt="Space Exploration accessory set featuring visors and gloves"
-                loading="lazy"
-              />
+              <a class="card__link" href="Portfolio/space-exploration.html">
+                <img
+                  src="img/Full%20Collections/Space%20Exploration/Space%20Ex%20Acc-Prop.png"
+                  alt="Space Exploration accessory set featuring visors and gloves"
+                  loading="lazy"
+                />
+              </a>
             </li>
           </ul>
 
@@ -147,7 +177,15 @@
     </main>
 
     <footer class="site-footer">
-      <p>&copy; <span data-year></span> Alex Adriano. All rights reserved.</p>
+      <div class="site-footer__content">
+        <p class="site-footer__lot">
+          Creative branding studio:
+          <a href="https://lotdesigns.net/" target="_blank" rel="noopener noreferrer"
+            >lotdesigns.net</a
+          >
+        </p>
+        <p>&copy; <span data-year></span> Alex Adriano. All rights reserved.</p>
+      </div>
     </footer>
 
     <script
